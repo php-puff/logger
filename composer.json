@@ -1,0 +1,59 @@
+{
+    "name": "puff/logger",
+    "description": "Lightweight PSR-3 logger for Puff",
+    "type": "library",
+    "keywords": [
+        "php",
+        "logger",
+        "logging",
+        "psr-3",
+        "puff"
+    ],
+    "license": "MIT",
+    "require": {
+        "puff/config": "dev-main",
+        "puff/di": "dev-main",
+        "php": "^8.2",
+        "psr/log": "^3.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Facades"
+        ],
+        "psr-4": {
+            "Puff\\Logger\\": "src/"
+        },
+        "files": [
+            "lib/puff.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Puff\\Logger\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "puff": {
+            "config": {
+                "logger.php": "config/logger.php"
+            },
+            "providers": [
+                "Puff\\Logger\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "analyse": "phpstan analyse src lib tests --level=8 --memory-limit=1G",
+        "test": "phpunit tests"
+    }
+}
